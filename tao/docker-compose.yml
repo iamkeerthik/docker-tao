@@ -13,12 +13,16 @@ web:
   links:
     - tao
 db:
-  image: mysql:latest
-  ports:
-    - "3306:3306"
-  environment:
-    MYSQL_ROOT_PASSWORD: r00t
-    MYSQL_USER: tao
-    MYSQL_PASSWORD: tao
-    MYSQL_DATABASE: tao
+   image: mysql:8
+   command: --default-authentication-plugin=mysql_native_password
+   ports:
+     - "3306:3306"
+   environment:
+     MYSQL_ROOT_PASSWORD: r00t
+     MYSQL_USER: tao
+     MYSQL_PASSWORD: tao
+     MYSQL_DATABASE: tao
+   cap_add:
+     - SYS_NICE  # CAP_SYS_NICE
+    
     
